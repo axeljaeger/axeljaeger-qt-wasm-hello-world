@@ -60,3 +60,6 @@ wasm/
 .emscripten
 .emscripten_cache
 .emscripten_ports
+
+# CodeQL
+_codeql_detected_source_root
