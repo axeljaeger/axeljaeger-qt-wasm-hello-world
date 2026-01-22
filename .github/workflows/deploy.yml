@@ -22,6 +22,15 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
     
+    - name: Install Qt Desktop (required for WebAssembly)
+      uses: jurplel/install-qt-action@v3
+      with:
+        version: '6.5.3'
+        host: 'linux'
+        target: 'desktop'
+        arch: 'gcc_64'
+        cache: true
+    
     - name: Install Qt for WebAssembly
       uses: jurplel/install-qt-action@v3
       with:
@@ -29,7 +38,6 @@ jobs:
         host: 'linux'
         target: 'desktop'
         arch: 'wasm_singlethread'
-        modules: 'qtbase qtdeclarative'
         cache: true
     
     - name: Setup Emscripten
