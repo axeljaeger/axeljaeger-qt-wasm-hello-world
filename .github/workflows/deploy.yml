@@ -69,6 +69,14 @@ jobs:
         cd build
         cmake --build . --parallel
     
+    - name: List build output
+      run: |
+        echo "Build directory contents:"
+        find build -type f -name "*.html" -o -name "*.js" -o -name "*.wasm" | sort
+        echo ""
+        echo "All build files:"
+        ls -laR build/
+    
     - name: Prepare deployment files
       run: |
         mkdir -p deploy

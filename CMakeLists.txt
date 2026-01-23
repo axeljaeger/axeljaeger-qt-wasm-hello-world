@@ -12,8 +12,8 @@ set(CMAKE_AUTOUIC ON)
 # Find Qt6 components
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
-# Add executable
-add_executable(HelloWorldWasm
+# Add executable using qt_add_executable for better Qt6 WASM support
+qt_add_executable(HelloWorldWasm
     src/main.cpp
     src/mainwindow.cpp
     src/mainwindow.h
@@ -29,11 +29,6 @@ target_link_libraries(HelloWorldWasm
 if(EMSCRIPTEN)
     set_target_properties(HelloWorldWasm PROPERTIES
         QT_WASM_PTHREAD_POOL_SIZE 4
-    )
-    
-    # Set output directory for WASM build
-    set_target_properties(HelloWorldWasm PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/wasm"
     )
 endif()
 
